@@ -22,7 +22,7 @@ export default {
 
     const schema = yup.object().shape({
       title: yup.string().max(50).min(4).required(),
-      description: yup.string().max(150).min(4).required(),
+      description: yup.string().max(200).min(4).required(),
       url: yup.string().min(5).required(),
     })
 
