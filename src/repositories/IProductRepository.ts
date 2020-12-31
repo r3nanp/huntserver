@@ -1,8 +1,10 @@
 import { Document } from 'mongoose'
 
-export interface IProductRepository extends Document {
+interface IProductRepository {
   title: string
   description: string
   url: string
   createdAt: Date
 }
+
+export type IModelProps = IProductRepository & Document
