@@ -1,12 +1,13 @@
 import mongoose, { Schema } from 'mongoose'
 
 import mongoosePaginate from 'mongoose-paginate'
-import { IProductRepository } from '../repositories/IProductRepository'
+import { IModelProps } from '../repositories/IProductRepository'
 
-const ProductSchema = new Schema<IProductRepository>({
+const ProductSchema = new Schema({
   title: {
     type: String,
     required: true,
+    unique: true
   },
   description: {
     type: String,
@@ -15,6 +16,7 @@ const ProductSchema = new Schema<IProductRepository>({
   url: {
     type: String,
     required: true,
+    unique: true
   },
   createdAt: {
     type: Date,
@@ -24,6 +26,6 @@ const ProductSchema = new Schema<IProductRepository>({
 
 ProductSchema.plugin(mongoosePaginate)
 
-const Product = mongoose.model('Product', ProductSchema)
+const Product = mongoose.model<IModelProps>('Product', ProductSchema)
 
 export { Product }
