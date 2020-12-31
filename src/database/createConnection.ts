@@ -12,6 +12,8 @@ async function createConnection() {
     await mongoose.connect(uri, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
+      useCreateIndex: true,
+      useFindAndModify: false
     })
     console.info('MongoDB connect...')
   } catch (err) {
