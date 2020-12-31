@@ -1,13 +1,10 @@
 import { ErrorRequestHandler } from 'express'
 import { ValidationError } from 'yup'
-
-interface ValidationErrors {
-  [key: string]: string[]
-}
+import { IValidationErrors } from '../repositories/IValidationErrors'
 
 const errorHandler: ErrorRequestHandler = (error, request, response) => {
   if (error instanceof ValidationError) {
-    let errors: ValidationErrors = {}
+    const errors: IValidationErrors = {}
 
     error.inner.forEach(err => {
       errors[err.path] = err.errors
@@ -19,4 +16,4 @@ const errorHandler: ErrorRequestHandler = (error, request, response) => {
   return response.status(500).json({ message: 'Internal server error' })
 }
 
-export default errorHandler
+export { errorHandler }
