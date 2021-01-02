@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { Product } from '../../entities/product.entity'
+import { Product } from '@entities/product.entity'
 
 async function ListProductController(
   request: Request,

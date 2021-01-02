@@ -1,8 +1,11 @@
 import { Request, Response } from 'express'
-import { Product } from '../../entities/product.entity'
+import { Product } from '@entities/product.entity'
 import * as yup from 'yup'
 
-async function CreateProductController(request: Request, response: Response): Promise<Response> {
+async function CreateProductController(
+  request: Request,
+  response: Response
+): Promise<Response> {
   const { title, description, url, createdAt } = request.body
 
   const data = { title, description, url, createdAt }
